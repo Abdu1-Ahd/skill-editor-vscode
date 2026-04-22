@@ -1,0 +1,70 @@
+{
+  "name": "skill-editor",
+  "displayName": ".Skill Editor",
+  "description": "Seamlessly browse and edit Antigravity .skill (ZIP) archives in VS Code.",
+  "version": "1.0.0",
+  "publisher": "Antigravity",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abdu1-Ahd/skill-editor-vscode.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onFileSystem:skill",
+    "onCustomEditor:skill-editor.openInEditor"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "skill-editor.openInEditor",
+        "title": "Open in .Skill Editor"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "skill-editor.editor",
+        "displayName": ".Skill Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.skill"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .skill",
+          "command": "skill-editor.openInEditor",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^16.11.7",
+    "@types/adm-zip": "^0.5.0",
+    "typescript": "^4.5.2",
+    "eslint": "^8.2.0"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.10"
+  }
+}
