@@ -66,3 +66,5 @@ The extension implements a **Virtual File System (VFS)** using the `vscode.FileS
 2. **Phase 2**: Build the "Read-Only" VFS (mounting and browsing).
 3. **Phase 3**: Implement "Write/Save" logic with atomic commit.
 4. **Phase 4**: Add UI flourishes (icons, status bar indicators).
+
+<!-- session:db7418be -->
